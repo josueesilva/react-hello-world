@@ -25,23 +25,22 @@ function Square(props) {
   
     render() {
         
+        let boardRows = [];
+        let identificadorQuadrado = 0;
+
+        for(let linha = 0; linha < 3; linha++){
+            let quadrados = [];
+            for(let quadrado = 0; quadrado < 3; quadrado++){
+                quadrados.push(this.renderSquare(identificadorQuadrado));
+
+                identificadorQuadrado++;
+            }
+            boardRows.push(<div className="board-row" key={linha}>{quadrados}</div>);
+        }
+        
       return (
         <div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
+          {boardRows}
         </div>
       );
     }
